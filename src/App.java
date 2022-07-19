@@ -1,8 +1,10 @@
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        
+
         System.out.println("### MENU ####");
         System.err.println("0 - Sair");
         System.out.println("1 - Listar os melhores filmes");
@@ -19,15 +21,24 @@ public class App {
             case 0:
                 // end
                 break;
-            
+
             case 1:
-                Api.getMovies();
-            
+                List<Map<String, String>> movies = Api.getMovies();
+                for (Map<String, String> movie : movies) {
+                    System.out.println(movie.get("title"));
+                    System.out.println(movie.get("year"));
+                    System.out.println(movie.get("imDbRating"));
+                }
             case 2:
-                Api.getSeries();
-        
+                List<Map<String, String>> series = Api.getSeries();
+                for (Map<String, String> serie : series) {
+                    System.out.println(serie.get("title"));
+                    System.out.println(serie.get("year"));
+                    System.out.println(serie.get("imDbRating"));
+                }
+
             default:
                 break;
         }
-    }  
+    }
 }
