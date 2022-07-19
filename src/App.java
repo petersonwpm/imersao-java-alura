@@ -1,3 +1,9 @@
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URI;
+import java.net.URL;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -20,7 +26,33 @@ public class App {
                 case 1:
                     List<Map<String, String>> movies = Api.getMovies();
                     for (Map<String, String> movie : movies) {
-                        System.out.println(movie);
+
+                        URL url = new URL(movie.get("image"));
+                        InputStream input = url.openStream();
+
+                        String movieName = movie.get("title").toLowerCase().replaceAll("\s","-") + ".jpg";
+
+                        File f =  new File(movieName);
+                        File currentDir = new File(System.getProperty("user.dir"));
+
+                        File out = new File(currentDir.getParent(), "output"); 
+                        
+                        if (!out.exists() && !out.canWrite()) throw new IOException("Não é possivel criar o diretório" + out.getPath());
+
+                        out.mkdir();
+
+
+                        System.out.println(out.getPath() +"/"+ f.getName());
+                        // if (!f.canWrite()) throw new IOException();
+
+                        FileOutputStream output = new FileOutputStream(out.getPath() +"/"+ f.getName());
+
+                        output.write(input.readAllBytes());
+
+                        output.flush();
+                        input.close();
+                        output.close();
+
                         View.show(movie);
                     }
                     break;
