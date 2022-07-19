@@ -9,12 +9,12 @@ import java.util.Map;
 public class Api {
 
     public static List<Map<String, String>> getSeries() throws IOException, InterruptedException {
-        Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b/Top250TVs"););
+        Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b/Top250TVs"));
         return http.get();
     }
 
     public static List<Map<String, String>> getMovies() throws IOException, InterruptedException {
-        Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b"));
+        Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b/Top250Movies"));
         return http.get();
     }
 }

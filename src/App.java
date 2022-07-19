@@ -25,16 +25,12 @@ public class App {
             case 1:
                 List<Map<String, String>> movies = Api.getMovies();
                 for (Map<String, String> movie : movies) {
-                    System.out.println(movie.get("title"));
-                    System.out.println(movie.get("year"));
-                    System.out.println(movie.get("imDbRating"));
+                    View.show(movie);
                 }
             case 2:
                 List<Map<String, String>> series = Api.getSeries();
                 for (Map<String, String> serie : series) {
-                    System.out.println(serie.get("title"));
-                    System.out.println(serie.get("year"));
-                    System.out.println(serie.get("imDbRating"));
+                    View.show(serie);
                 }
 
             default:
