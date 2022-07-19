@@ -1,4 +1,4 @@
-[Imersão Java(https://img.shields.io/badge/status-IMERS%C3%83O%20JAVA-success)
+[Imersão Java](https://img.shields.io/badge/status-IMERS%C3%83O%20JAVA-success)
 
 # O que é?
 
