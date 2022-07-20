@@ -42,13 +42,15 @@ public class App {
                         File currentDir = new File(System.getProperty("user.dir"));
 
                         BufferedImage image = ImageIO.read(input);
+                        BufferedImage resImage = new BufferedImage(image.getWidth(), image.getHeight() + 200, BufferedImage.TRANSLUCENT);
 
-                        Graphics2D graphics = image.createGraphics();
+                        Graphics2D graphics = resImage.createGraphics();
+                        graphics.drawImage(image, 0, 0, null);
 
                         Font font = new Font(Font.SANS_SERIF, Font.BOLD, 64);
 
                         graphics.setFont(font);
-                        graphics.drawString(movieName, 100, 100);
+                        graphics.drawString(movieName, 100, image.getHeight() + 100);
 
                         File out = new File(currentDir.getParent(), "output"); 
 
@@ -61,7 +63,7 @@ public class App {
                         File output = new File(out.getPath() +"/"+ f.getName());
 
                         // output.write(input.readAllBytes());
-                        ImageIO.write( image, "png", output); // output.flush();
+                        ImageIO.write( resImage, "png", output); // output.flush();
                         input.close();
                         // output.close();
 
