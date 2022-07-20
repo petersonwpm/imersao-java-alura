@@ -12,3 +12,14 @@ na IMERSÃO JAVA pela ALURA.
 # Gerenciador de SDK
 
 - [sdkman](https://sdkman.io/)
+
+# Build
+
+```bash
+javac -Xlint -d bin/ -cp src/ src/App.java
+```
+
+# Run
+```bash
+bin$ java App
+```
