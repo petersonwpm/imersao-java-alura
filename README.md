@@ -23,3 +23,14 @@ javac -Xlint -d bin/ -cp src/ src/App.java
 ```bash
 bin$ java App
 ```
+
+# Em execução
+
+## Menu
+![image](https://user-images.githubusercontent.com/2123360/179889243-033ae8de-1ca1-497a-abad-69cc0c1f9288.png)
+
+## Lista de filmes
+![image](https://user-images.githubusercontent.com/2123360/179889321-c2046117-af63-4631-ad6f-dc5f8045b803.png)
+
+## Figurinha
+![image](https://user-images.githubusercontent.com/2123360/179889378-4e4e49ef-0110-475d-ba43-d516b12686a1.png)
