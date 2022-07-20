@@ -33,7 +33,10 @@ public class App {
                     break;
                 case 3:
                     movies = Api.getMovies();
-                    // List<Map<String, String>> series = Api.getMovies();
+                    series = Api.getMovies();
+
+                    movies.addAll(series);
+
                     for (Map<String,String> movie : movies) {
                         Sticker.generate(movie);
                     }
