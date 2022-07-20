@@ -18,7 +18,8 @@ public class View {
         System.out.println("\n\n### \uD83D\uDCFA MENU \uD83D\uDCFA ####\n");
         System.err.println("0 - Sair");
         System.out.println("1 - Listar os melhores filmes");
-        System.out.println("2 - Listar as melhores series\n");
-        System.err.print("Qual a sua escolha?: ");
+        System.out.println("2 - Listar as melhores series");
+        System.out.println("3 - Gerar figurinhas");
+        System.err.print("\nQual a sua escolha?: ");
     }
 }
