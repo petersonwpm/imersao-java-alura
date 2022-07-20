@@ -1,12 +1,11 @@
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        List<Map<String, String>> movies;
-        List<Map<String, String>> series;
+        List<Content> movies;
+        List<Content> series;
         int opt;
         do {
             View.menu();
@@ -21,13 +20,13 @@ public class App {
 
                 case 1:
                     movies = Api.getMovies();
-                    for (Map<String, String> movie : movies) {
+                    for (Content movie : movies) {
                         View.show(movie);
                     }
                     break;
                 case 2:
                     series = Api.getSeries();
-                    for (Map<String, String> serie : series) {
+                    for (Content serie : series) {
                         View.show(serie);
                     }
                     break;
@@ -37,7 +36,7 @@ public class App {
 
                     movies.addAll(series);
 
-                    for (Map<String,String> movie : movies) {
+                    for (Content movie : movies) {
                         Sticker.generate(movie);
                     }
 

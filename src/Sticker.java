@@ -5,17 +5,16 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Map;
 import javax.imageio.ImageIO;
 
 public class Sticker {
-    public static void generate(Map<String, String> movie) throws IOException {
-        URL url = new URL(movie.get("image"));
+    public static void generate(Content content) throws IOException {
+        URL url = new URL(content.getUrlImage());
         /** @todo: identificar o mime type */
         InputStream stream = url.openStream();
 
-        String movieName = movie
-            .get("title")
+        String movieName = content
+            .getTitle()
             .toLowerCase()
             .replaceAll("[.',:]","")
             .replaceAll("[\s]","-") + ".png";
@@ -34,9 +33,9 @@ public class Sticker {
 
         graphics
             .drawString(
-                    (int) Float.parseFloat(movie.get("imDbRating")) >= 9 
-                    ? "Bah, Loco d'especial " + movie.get("imDbRating") 
-                    : "Nem pra saída " + movie.get("imDbRating"), 100, image.getHeight() + 100);
+                    content.getRating() >= 9 
+                    ? "Bah, Loco d'especial " + content.getRating()
+                    : "Nem pra saída " + content.getRating(), 100, image.getHeight() + 100);
 
         File out = new File(currentDir.getParent(), "output"); 
 

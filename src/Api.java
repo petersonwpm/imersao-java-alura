@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,26 +9,44 @@ import java.util.Map;
  */
 public class Api {
 
-    public static List<Map<String, String>> getSeries() throws IOException, InterruptedException {
+    public static List<Content> getSeries() throws IOException, InterruptedException {
         Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b/Top250TVs"));
         JsonParser parser = new JsonParser();
 
-        List<Map<String, String>> movies = parser.parse(http.get().body());
+        List<Map<String, String>> items = parser.parse(http.get().body());
 
-        for (int i = 0; i < movies.size(); i++) {
-           movies.get(i).put("imDbRating", "0");
-           System.out.println(movies.get(i));
+        List<Content> contents = new ArrayList<>();
+
+        for (Map<String, String> item : items) {
+            contents.add(
+                    new Content(
+                            item.get("title"),
+                            item.get("url"),
+                            (int) Float.parseFloat(item.get("imDbRating")),
+                            item.get("year")));
         }
 
-        return movies;
-// (int) Float.parseFloat(rating)
+        return contents;
     }
 
-    public static List<Map<String, String>> getMovies() throws IOException, InterruptedException {
+    public static List<Content> getMovies() throws IOException, InterruptedException {
         Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b/Top250Movies"));
         JsonParser parser = new JsonParser();
 
-        return parser.parse(http.get().body());
+        List<Map<String, String>> items = parser.parse(http.get().body());
+
+        List<Content> contents = new ArrayList<>();
+
+        for (Map<String, String> item : items) {
+            contents.add(
+                    new Content(
+                            item.get("title"),
+                            item.get("url"),
+                            (int) Float.parseFloat(item.get("imDbRating")),
+                            item.get("year")));
+        }
+
+        return contents;
 
     }
 }
