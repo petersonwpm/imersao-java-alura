@@ -12,7 +12,15 @@ public class Api {
         Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b/Top250TVs"));
         JsonParser parser = new JsonParser();
 
-        return parser.parse(http.get().body());
+        List<Map<String, String>> movies = parser.parse(http.get().body());
+
+        for (int i = 0; i < movies.size(); i++) {
+           movies.get(i).put("imDbRating", "0");
+           System.out.println(movies.get(i));
+        }
+
+        return movies;
+// (int) Float.parseFloat(rating)
     }
 
     public static List<Map<String, String>> getMovies() throws IOException, InterruptedException {
