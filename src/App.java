@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
+import java.awt.Font;
 
 import javax.imageio.ImageIO;
 
@@ -44,6 +45,9 @@ public class App {
 
                         Graphics2D graphics = image.createGraphics();
 
+                        Font font = new Font(Font.SANS_SERIF, Font.BOLD, 64);
+
+                        graphics.setFont(font);
                         graphics.drawString(movieName, 100, 100);
 
                         File out = new File(currentDir.getParent(), "output"); 
