@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Api
  */
-public class Api {
+public class IMBDApiExtractor {
 
     public static List<Content> getSeries() throws IOException, InterruptedException {
         Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b/Top250TVs"));
@@ -21,7 +21,7 @@ public class Api {
             contents.add(
                     new Content(
                             item.get("title"),
-                            item.get("url"),
+                            item.get("image"),
                             (int) Float.parseFloat(item.get("imDbRating")),
                             item.get("year")));
         }
@@ -41,7 +41,7 @@ public class Api {
             contents.add(
                     new Content(
                             item.get("title"),
-                            item.get("url"),
+                            item.get("image"),
                             (int) Float.parseFloat(item.get("imDbRating")),
                             item.get("year")));
         }

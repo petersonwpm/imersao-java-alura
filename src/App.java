@@ -19,20 +19,20 @@ public class App {
                     break;
 
                 case 1:
-                    movies = Api.getMovies();
+                    movies = IMBDApiExtractor.getMovies();
                     for (Content movie : movies) {
                         View.show(movie);
                     }
                     break;
                 case 2:
-                    series = Api.getSeries();
+                    series = IMBDApiExtractor.getSeries();
                     for (Content serie : series) {
                         View.show(serie);
                     }
                     break;
                 case 3:
-                    movies = Api.getMovies();
-                    series = Api.getMovies();
+                    movies = IMBDApiExtractor.getMovies();
+                    series = IMBDApiExtractor.getMovies();
 
                     movies.addAll(series);
 

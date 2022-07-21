@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 
 public class Sticker {
     public static void generate(Content content) throws IOException {
+        System.out.println(content.getUrlImage());
         URL url = new URL(content.getUrlImage());
         /** @todo: identificar o mime type */
         InputStream stream = url.openStream();
@@ -22,20 +23,37 @@ public class Sticker {
         File currentDir = new File(System.getProperty("user.dir"));
 
         BufferedImage image = ImageIO.read(stream);
-        BufferedImage resImage = new BufferedImage(image.getWidth(), image.getHeight() + 200, BufferedImage.OPAQUE);
+        Double w = image.getWidth() * 0.3;
+        Double h = image.getHeight() * 0.3;
 
-        Graphics2D graphics = resImage.createGraphics();
-        graphics
-            .drawImage(image, 0, 0, null);
+        BufferedImage sticker = new BufferedImage(
+                w.intValue(),
+                h.intValue(),
+                BufferedImage.OPAQUE
+                );
+        
+        Graphics2D g2dSticker = sticker.createGraphics();
+        g2dSticker
+            .drawImage(image, 0, 0, w.intValue(), h.intValue(), null);
 
-        graphics
-            .setFont(new Font(Font.SANS_SERIF, Font.BOLD, 64));
+        BufferedImage resImage = new BufferedImage(
+                w.intValue(),
+                h.intValue() + 100,
+                BufferedImage.TRANSLUCENT
+        );
 
-        graphics
+        Graphics2D g2dNew = resImage.createGraphics();
+        g2dNew
+            .drawImage(sticker, 0, 0, null);
+
+        g2dNew
+            .setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
+
+        g2dNew
             .drawString(
                     content.getRating() >= 9 
                     ? "Bah, Loco d'especial " + content.getRating()
-                    : "Nem pra saída " + content.getRating(), 100, image.getHeight() + 100);
+                    : "Nem pra saída " + content.getRating(), w.intValue() / 4, h.intValue() + 50);
 
         File out = new File(currentDir.getParent(), "output"); 
 
