@@ -1,10 +1,10 @@
 public class View {
-    public static void show(Content content) {
+    public static void show(ContentRecord content) {
         System.out.println("\n \uD83D\uDCFC");
-        System.out.println("\u001b[1mTitulo:\u001b[m " + content.getTitle());
-        System.out.println("\u001b[1mAno:\u001b[m " + content.getYear());
+        System.out.println("\u001b[1mTitulo:\u001b[m " + content.title());
+        System.out.println("\u001b[1mAno:\u001b[m " + content.year());
 
-        Integer rating = content.getRating();
+        Integer rating = content.rating();
 
         String stars = "\u2B50".repeat(rating);
 
