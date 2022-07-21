@@ -8,14 +8,13 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class Sticker {
-    public static void generate(Content content) throws IOException {
-        System.out.println(content.getUrlImage());
-        URL url = new URL(content.getUrlImage());
+    public static void generate(ContentRecord content) throws IOException {
+        URL url = new URL(content.urlImage());
         /** @todo: identificar o mime type */
         InputStream stream = url.openStream();
 
         String movieName = content
-            .getTitle()
+            .title()
             .toLowerCase()
             .replaceAll("[.',:]","")
             .replaceAll("[\s]","-") + ".png";
@@ -51,9 +50,9 @@ public class Sticker {
 
         g2dNew
             .drawString(
-                    content.getRating() >= 9 
-                    ? "Bah, Loco d'especial " + content.getRating()
-                    : "Nem pra saída " + content.getRating(), w.intValue() / 4, h.intValue() + 50);
+                    content.rating() >= 9 
+                    ? "Bah, Loco d'especial " + content.rating()
+                    : "Nem pra saída " + content.rating(), w.intValue() / 4, h.intValue() + 50);
 
         File out = new File(currentDir.getParent(), "output"); 
 

@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
-        List<Content> movies;
-        List<Content> series;
+        List<ContentRecord> movies;
+        List<ContentRecord> series;
         int opt;
         do {
             View.menu();
@@ -20,13 +20,13 @@ public class App {
 
                 case 1:
                     movies = IMBDApiExtractor.getMovies();
-                    for (Content movie : movies) {
+                    for (ContentRecord movie : movies) {
                         View.show(movie);
                     }
                     break;
                 case 2:
                     series = IMBDApiExtractor.getSeries();
-                    for (Content serie : series) {
+                    for (ContentRecord serie : series) {
                         View.show(serie);
                     }
                     break;
@@ -36,7 +36,7 @@ public class App {
 
                     movies.addAll(series);
 
-                    for (Content movie : movies) {
+                    for (ContentRecord movie : movies) {
                         Sticker.generate(movie);
                     }
 
