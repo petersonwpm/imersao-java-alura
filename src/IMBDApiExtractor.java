@@ -9,7 +9,8 @@ import java.util.Map;
  */
 public class IMBDApiExtractor {
 
-    public static List<ContentRecord> getSeries() throws IOException, InterruptedException {
+    public static List<ContentRecord> getSeries()  {
+        try {
         Http http = new Http(URI.create("https://api.mocki.io/v2/549a5d8b/Top250TVs"));
         JsonParser parser = new JsonParser();
 
@@ -27,6 +28,9 @@ public class IMBDApiExtractor {
         }
 
         return contents;
+        } catch(IOException | InterruptedException ex) {
+            throw new HttpException(ex.getMessage());
+        }
     }
 
     public static List<ContentRecord> getMovies() throws IOException, InterruptedException {
