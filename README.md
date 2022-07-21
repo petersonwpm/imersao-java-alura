@@ -30,7 +30,8 @@ bin$ java App
 ![image](https://user-images.githubusercontent.com/2123360/179889243-033ae8de-1ca1-497a-abad-69cc0c1f9288.png)
 
 ## Lista de filmes
+
 ![image](https://user-images.githubusercontent.com/2123360/179889321-c2046117-af63-4631-ad6f-dc5f8045b803.png)
 
 ## Figurinha
-![image](https://user-images.githubusercontent.com/2123360/179889378-4e4e49ef-0110-475d-ba43-d516b12686a1.png)
+![the-godfather-part-ii](https://user-images.githubusercontent.com/2123360/180115495-5241b551-e787-4877-982d-a7eb1faebc19.png)
